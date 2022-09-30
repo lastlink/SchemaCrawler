@@ -4,16 +4,26 @@
 
 ## Start the SchemaCrawler Docker Container
 
-[SchemaCrawler is distrubuted with an image on Docker Hub](https://hub.docker.com/r/schemacrawler/schemacrawler/). Run the SchemaCrawler Docker container like this:
+[SchemaCrawler is distributed with an image on Docker Hub](https://hub.docker.com/r/schemacrawler/schemacrawler/). Run the SchemaCrawler Docker container like this:
 
-```
-docker run \
--v $(pwd):/home/schcrwlr/share \
---name schemacrawler \
---rm -i -t \
---entrypoint=/bin/bash \
-schemacrawler/schemacrawler
-```
+* bash
+   ```sh
+   docker run \
+   -v $(pwd):/home/schcrwlr/share \
+   --name schemacrawler \
+   --rm -i -t \
+   --entrypoint=/bin/bash \
+   schemacrawler/schemacrawler
+   ```
+* cmd.exe
+  ```bat
+  docker run ^
+    -v "%cd%":/home/schcrwlr/share ^
+    --name schemacrawler ^
+    --rm -i -t ^
+    --entrypoint="/bin/bash" ^
+    schemacrawler/schemacrawler
+   ```
 The SchemaCrawler Docker container starts with a non-privileged user `schcrwlr` in group `users`. Please ensure that the mount point for the SchemaCrawler Docker container is writable by user 1000 in group 100 on the host.
 
 ## Use the SchemaCrawler Interactive Shell
